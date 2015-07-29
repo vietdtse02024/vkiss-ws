@@ -1,7 +1,9 @@
 package com.fyvi.ws.business;
 
-import com.fyvi.ws.model.User;
+import java.util.List;
+
+import com.fyvi.ws.bean.User;
 
 public interface IUserManagement {
-	public User test();
+	public List<User> getListUser();
 }

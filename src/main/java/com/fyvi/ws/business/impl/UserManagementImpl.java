@@ -1,16 +1,17 @@
 package com.fyvi.ws.business.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.fyvi.ws.bean.User;
 import com.fyvi.ws.business.IUserManagement;
-import com.fyvi.ws.model.User;
 
 public class UserManagementImpl implements IUserManagement{
 
 	@Override
-	public User test() {
-		User user = new User();
-		user.setName("Viet Dao");
-		user.setAge(24);
-		return user;
+	public List<User> getListUser() {
+		List<User> listUser = new ArrayList<User>();
+		return listUser;
 	}
 
 }
