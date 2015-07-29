@@ -98,19 +98,22 @@
 			<artifactId>jersey-json</artifactId>
 			<version>1.8</version>
 		</dependency>
-		
-		<dependency>
-			<groupId>com.microsoft.sqlserver</groupId>
-			<artifactId>sqljdbc4</artifactId>
-			<version>4.0</version>
-		</dependency>
-		
+
+
 		<!-- Hibernate framework -->
+
 		<dependency>
-			<groupId>hibernate</groupId>
-			<artifactId>hibernate3</artifactId>
-			<version>3.2.3.GA</version>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>3.6.3.Final</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate</artifactId>
+			<version>3.2.3.ga</version>
+		</dependency>
+
 
 
 		<!-- Hibernate library dependecy start -->
