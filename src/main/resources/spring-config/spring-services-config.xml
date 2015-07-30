@@ -6,11 +6,9 @@
 	http://www.springframework.org/schema/context
 	http://www.springframework.org/schema/context/spring-context-3.0.xsd">
  
-	<context:component-scan base-package="com.fyvi.ws.rest" />
-	<bean id="abstractManager" abstract="true" class="phn.nts.ams.simple.fe.common.AbstractManager">
-		<property name="userDAO" ref="userDAO"/>
-	</bean>
-	<bean id="userManagement" class="com.fyvi.ws.business.impl.UserManagementImpl" parent="abstractManager">
+<!-- 	<context:component-scan base-package="com.fyvi.ws.rest" /> -->
+	 <bean id="accountService" class="com.fyvi.ws.rest.AccountService">
+		<property name="userManagement" ref="userManagement" />
 	</bean>
  
 </beans>

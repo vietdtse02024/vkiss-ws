@@ -2,17 +2,15 @@ package com.fyvi.ws.dao.impl;
 
 import java.util.List;
 
-import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
-
 import com.fyvi.ws.bean.User;
 import com.fyvi.ws.dao.IUserDAO;
 
-public class UserDAOImpl extends HibernateDaoSupport implements IUserDAO{
+public class UserDAOImpl extends BaseHelperDAO<User> implements IUserDAO<User>{
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<User> getListUser() {
-		List<User> listUser = getHibernateTemplate().find("from persons");
+		List<User> listUser = getHibernateTemplate().find("from User");
 		return listUser;
 	}
 
