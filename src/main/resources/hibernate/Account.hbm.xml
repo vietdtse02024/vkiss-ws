@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.fyvi.ws.bean.Account" table="ACCOUNT">
+		<id name="accountId" type="string">
+			<column name="ACCOUNT_ID" length="50"/>
+		</id>
+		<property name="accountName" type="string">
+			<column name="ACCOUNT_NAME" length="50" />
+		</property>
+		<property name="fullName" type="string">
+			<column name="FULL_NAME" length="100"/>
+		</property>
+		<property name="age" type="java.lang.Integer">
+			<column name="AGE" />
+		</property>
+		<property name="gender" type="java.lang.Integer">
+			<column name="GENDER"/>
+		</property>
+		<property name="phoneNumber" type="string">
+			<column name="PHONE_NUMBER" length="50"/>
+		</property>
+		<property name="address" type="string">
+			<column name="ADDRESS" length="500"/>
+		</property>
+		<property name="birthDate" type="string">
+			<column name="BIRTH_DATE" length="20"/>
+		</property>
+		<property name="inputDate" type="java.util.Date">
+			<column name="INPUT_DATE"/>
+		</property>
+		<property name="updateDate" type="java.util.Date">
+			<column name="UPDATED_DATE"/>
+		</property>
+		<property name="activeFlg" type="java.lang.Integer">
+			<column name="ACTIVE_FLG"/>
+		</property>
+	</class>
+</hibernate-mapping>
