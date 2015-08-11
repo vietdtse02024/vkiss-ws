@@ -13,6 +13,9 @@
 		<property name="fullName" type="string">
 			<column name="FULL_NAME" length="100"/>
 		</property>
+		<property name="password" type="string">
+			<column name="PASSWORD" length="100"/>
+		</property>
 		<property name="age" type="java.lang.Integer">
 			<column name="AGE" />
 		</property>

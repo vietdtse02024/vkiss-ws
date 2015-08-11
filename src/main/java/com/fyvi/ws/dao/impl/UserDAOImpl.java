@@ -23,4 +23,10 @@ public class UserDAOImpl extends BaseHelperDAO<User> implements IUserDAO<User>{
 		return null;
 	}
 
+	@Override
+	public Integer registAccount(Account account) {
+		getHibernateTemplate().save(account);
+		return null;
+	}
+
 }

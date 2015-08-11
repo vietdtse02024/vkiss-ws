@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 import com.fyvi.ws.bean.Account;
 import com.fyvi.ws.bean.User;
 import com.fyvi.ws.business.IUserManagement;
+import com.fyvi.ws.common.MD5Encrypt;
 import com.fyvi.ws.model.UserModel;
  
 @Component
@@ -49,6 +50,25 @@ public class AccountService {
 		}
 		return model;
  
+	}
+	@GET
+	@Path("/regist-account/{phoneNo}/{fullName}/{accountName}/{password}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public UserModel registAccount(@PathParam("phoneNo")String phoneNo,@PathParam("fullName")String fullName, @PathParam("accountName")String accountName, @PathParam("password")String password) {
+		
+		try {
+			Account account = new Account();
+			account.setPhoneNumber(phoneNo);
+			account.setFullName(fullName);
+			account.setAccountName(accountName);
+			account.setPassword(MD5Encrypt.crypt(password));
+			userManagement.registAccount(account);
+			model.setAccount(account);
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+		}
+		return model;
+		
 	}
 
 	public IUserManagement getUserManagement() {

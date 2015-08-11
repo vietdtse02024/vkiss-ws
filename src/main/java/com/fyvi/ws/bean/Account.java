@@ -7,6 +7,7 @@ public class Account implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private String accountId;
 	private String accountName;
+	private String password;
 	private String fullName;
 	private Integer age;
 	private Integer gender;
@@ -81,6 +82,12 @@ public class Account implements Serializable{
 	}
 	public void setActiveFlg(Integer activeFlg) {
 		this.activeFlg = activeFlg;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
 }
