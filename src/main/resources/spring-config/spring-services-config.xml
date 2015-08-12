@@ -7,7 +7,10 @@
 	http://www.springframework.org/schema/context/spring-context-3.0.xsd">
  
 <!-- 	<context:component-scan base-package="com.fyvi.ws.rest" /> -->
-	 <bean id="accountService" class="com.fyvi.ws.rest.AccountService">
+	<bean id="accountService" class="com.fyvi.ws.rest.AccountService">
+		<property name="userManagement" ref="userManagement" />
+	</bean>
+	<bean id="homeService" class="com.fyvi.ws.rest.HomeService">
 		<property name="userManagement" ref="userManagement" />
 	</bean>
  

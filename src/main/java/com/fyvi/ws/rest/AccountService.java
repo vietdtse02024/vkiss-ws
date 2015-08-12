@@ -2,7 +2,9 @@ package com.fyvi.ws.rest;
  
 import java.util.List;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -14,7 +16,6 @@ import org.springframework.stereotype.Component;
 import com.fyvi.ws.bean.Account;
 import com.fyvi.ws.bean.User;
 import com.fyvi.ws.business.IUserManagement;
-import com.fyvi.ws.common.MD5Encrypt;
 import com.fyvi.ws.model.UserModel;
  
 @Component
@@ -38,12 +39,12 @@ public class AccountService {
 	}
 	
 	@GET
-	@Path("/check-account-exist/{phoneNo}")
+	@Path("/check-device-exist/{uuid}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public UserModel checkAccountExist(@PathParam("phoneNo")String phoneNo) {
+	public UserModel checkAccountExist(@PathParam("uuid")String uuid) {
 		
 		try {
-			Account account = userManagement.checkAccountExist(phoneNo);
+			Account account = userManagement.checkAccountExist(uuid);
 			model.setAccount(account);
 		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
@@ -51,17 +52,12 @@ public class AccountService {
 		return model;
  
 	}
-	@GET
-	@Path("/regist-account/{phoneNo}/{fullName}/{accountName}/{password}")
+	@POST
+	@Path("/regist-account")
 	@Produces(MediaType.APPLICATION_JSON)
-	public UserModel registAccount(@PathParam("phoneNo")String phoneNo,@PathParam("fullName")String fullName, @PathParam("accountName")String accountName, @PathParam("password")String password) {
-		
+	@Consumes(MediaType.APPLICATION_JSON)
+	public UserModel registAccount(Account account) {
 		try {
-			Account account = new Account();
-			account.setPhoneNumber(phoneNo);
-			account.setFullName(fullName);
-			account.setAccountName(accountName);
-			account.setPassword(MD5Encrypt.crypt(password));
 			userManagement.registAccount(account);
 			model.setAccount(account);
 		} catch (Exception e) {

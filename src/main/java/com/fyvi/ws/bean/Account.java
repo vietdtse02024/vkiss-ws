@@ -3,13 +3,17 @@ package com.fyvi.ws.bean;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Account implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private String accountId;
 	private String accountName;
 	private String password;
 	private String fullName;
-	private Integer age;
+	private String uuid;
 	private Integer gender;
 	private String phoneNumber;
 	private String address;
@@ -35,11 +39,11 @@ public class Account implements Serializable{
 	public void setFullName(String fullName) {
 		this.fullName = fullName;
 	}
-	public Integer getAge() {
-		return age;
+	public String getUuid() {
+		return uuid;
 	}
-	public void setAge(Integer age) {
-		this.age = age;
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
 	}
 	public Integer getGender() {
 		return gender;

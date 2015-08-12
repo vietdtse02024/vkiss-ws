@@ -15,8 +15,8 @@ public class UserDAOImpl extends BaseHelperDAO<User> implements IUserDAO<User>{
 	}
 
 	@Override
-	public Account findByPhoneNo(String phoneNo) {
-		List<Account> listUser = getHibernateTemplate().find("from Account where phoneNumber = ? and activeFlg = 1", phoneNo);
+	public Account findByPhoneNo(String uuid) {
+		List<Account> listUser = getHibernateTemplate().find("from Account where uuid = ? and activeFlg = 1", uuid);
 		if (listUser != null && listUser.size() > 0) {
 			return listUser.get(0);
 		}
