@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.fyvi.ws.bean.RelationShip" table="RELATION_SHIP">
+		<id name="id" type="string">
+			<column name="ID" length="50"/>
+		</id>
+		<property name="accountId" type="string">
+			<column name="ACCOUNT_ID" length="50" />
+		</property>
+		<property name="accountIdFriend" type="string">
+			<column name="ACCOUNT_ID_FRIEND" length="100"/>
+		</property>
+		<property name="status" type="java.lang.Integer">
+			<column name="STATUS"/>
+		</property>
+		<property name="inputDate" type="java.util.Date">
+			<column name="INPUT_DATE"/>
+		</property>
+		<property name="updateDate" type="java.util.Date">
+			<column name="UPDATED_DATE"/>
+		</property>
+		<property name="activeFlg" type="java.lang.Integer">
+			<column name="ACTIVE_FLG"/>
+		</property>
+	</class>
+</hibernate-mapping>
