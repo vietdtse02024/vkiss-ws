@@ -3,17 +3,16 @@ package com.fyvi.ws.model;
 import java.util.List;
 
 import com.fyvi.ws.bean.Account;
-import com.fyvi.ws.bean.User;
 
 public class UserModel {
-	List<User> listUser;
+	List<Account> listUser;
 	Account account;
 
-	public List<User> getListUser() {
+	public List<Account> getListUser() {
 		return listUser;
 	}
 
-	public void setListUser(List<User> listUser) {
+	public void setListUser(List<Account> listUser) {
 		this.listUser = listUser;
 	}
 

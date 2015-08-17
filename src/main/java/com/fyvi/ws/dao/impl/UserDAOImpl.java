@@ -3,16 +3,10 @@ package com.fyvi.ws.dao.impl;
 import java.util.List;
 
 import com.fyvi.ws.bean.Account;
-import com.fyvi.ws.bean.User;
 import com.fyvi.ws.dao.IUserDAO;
 
 @SuppressWarnings("unchecked")
-public class UserDAOImpl extends BaseHelperDAO<User> implements IUserDAO<User>{
-	@Override
-	public List<User> getListUser() {
-		List<User> listUser = getHibernateTemplate().find("from User");
-		return listUser;
-	}
+public class UserDAOImpl extends BaseHelperDAO<Account> implements IUserDAO<Account>{
 
 	@Override
 	public Account findByPhoneNo(String uuid) {

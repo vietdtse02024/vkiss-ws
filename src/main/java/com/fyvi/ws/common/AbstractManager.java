@@ -1,16 +1,16 @@
 package com.fyvi.ws.common;
 
-import com.fyvi.ws.bean.User;
+import com.fyvi.ws.bean.Account;
 import com.fyvi.ws.dao.IUserDAO;
 
 public class AbstractManager {
-	IUserDAO<User> userDAO;
+	IUserDAO<Account> userDAO;
 
-	public IUserDAO<User> getUserDAO() {
+	public IUserDAO<Account> getUserDAO() {
 		return userDAO;
 	}
 
-	public void setUserDAO(IUserDAO<User> userDAO) {
+	public void setUserDAO(IUserDAO<Account> userDAO) {
 		this.userDAO = userDAO;
 	}
 	
