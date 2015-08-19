@@ -46,4 +46,10 @@ public class UserManagementImpl extends AbstractManager implements IUserManageme
 		return listFriends;
 	}
 
+	@Override
+	public boolean checkPhoneNo(String phoneNo) throws Exception {
+		Account account = getUserDAO().getUserByPhoneNo(phoneNo);
+		return account == null ? false : true;
+	}
+
 }

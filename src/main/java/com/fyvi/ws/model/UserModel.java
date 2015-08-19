@@ -9,6 +9,7 @@ public class UserModel {
 	List<Account> listUser;
 	Account account;
 	List<UserFriendsView> listFriends;
+	String errorMessage;
 
 	public List<Account> getListUser() {
 		return listUser;
@@ -33,4 +34,13 @@ public class UserModel {
 	public void setListFriends(List<UserFriendsView> listFriends) {
 		this.listFriends = listFriends;
 	}
+
+	public String getErrorMessage() {
+		return errorMessage;
+	}
+
+	public void setErrorMessage(String errorMessage) {
+		this.errorMessage = errorMessage;
+	}
+	
 }

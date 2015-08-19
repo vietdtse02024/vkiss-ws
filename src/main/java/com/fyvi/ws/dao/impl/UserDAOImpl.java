@@ -35,4 +35,14 @@ public class UserDAOImpl extends BaseHelperDAO<Account> implements IUserDAO<Acco
 		return (List<Account>) sqlQuery.list();
 	}
 
+	@Override
+	public Account getUserByPhoneNo(String phoneNo) {
+		Account account = null;
+		List<Account> listUser = getHibernateTemplate().find("from Account where phoneNumber = ? and activeFlg = 1", phoneNo);
+		if (listUser != null && listUser.size() > 0) {
+			account = listUser.get(0);
+		}
+		return account;
+	}
+
 }

@@ -8,4 +8,5 @@ public interface IUserDAO<E> extends IBaseDAO<E> {
 	public Account findByUuid(String uuid);
 	public Integer registAccount(Account account);
 	public List<Account> getListFriends(String accountId);
+	public Account getUserByPhoneNo(String phoneNo);
 }

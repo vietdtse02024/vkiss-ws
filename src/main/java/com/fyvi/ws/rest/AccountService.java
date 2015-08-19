@@ -43,8 +43,11 @@ public class AccountService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public UserModel registAccount(Account account) {
 		try {
-			userManagement.registAccount(account);
-			model.setAccount(account);
+			if (!userManagement.checkPhoneNo(account.getPhoneNumber())) {
+				userManagement.registAccount(account);
+			} else {
+				model.setErrorMessage("regist.phoneno.exist");
+			}
 		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
 		}
