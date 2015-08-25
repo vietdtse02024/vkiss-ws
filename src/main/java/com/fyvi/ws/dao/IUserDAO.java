@@ -9,4 +9,5 @@ public interface IUserDAO<E> extends IBaseDAO<E> {
 	public Integer registAccount(Account account);
 	public List<Account> getListFriends(String accountId);
 	public Account getUserByPhoneNo(String phoneNo);
+	public int removeFriend(String accountId, String accountIdFriend);
 }

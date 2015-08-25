@@ -52,4 +52,9 @@ public class UserManagementImpl extends AbstractManager implements IUserManageme
 		return account == null ? false : true;
 	}
 
+	@Override
+	public int removeFriend(String accountId, String accountIdFriend) throws Exception {
+		return getUserDAO().removeFriend(accountId, accountIdFriend);
+	}
+
 }

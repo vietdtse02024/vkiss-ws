@@ -25,8 +25,8 @@ public class UserDAOImpl extends BaseHelperDAO<Account> implements IUserDAO<Acco
 	}
 
 	@Override
-	public List<Account> getListFriends(final String accountId) {
-		final StringBuffer query = new StringBuffer("SELECT  ac.*					")
+	public List<Account> getListFriends(String accountId) {
+		StringBuffer query = new StringBuffer("SELECT  ac.*							")
 		.append(" FROM ACCOUNT AS ac INNER JOIN RELATION_SHIP AS rls				")
 		.append(" ON ac.ACCOUNT_ID = rls.ACCOUNT_ID_FRIEND 							")
 		.append(" WHERE rls.ACCOUNT_ID = :accountId 								");
@@ -43,6 +43,24 @@ public class UserDAOImpl extends BaseHelperDAO<Account> implements IUserDAO<Acco
 			account = listUser.get(0);
 		}
 		return account;
+	}
+
+	@Override
+	public int removeFriend(String accountId, String accountIdFriend) {
+		StringBuffer query = new StringBuffer("UPDATE RELATION_SHIP ")
+			.append(" SET ACTIVE_FLG = 0 											")
+			.append(" WHERE (	ACCOUNT_ID 					= :accountId			")
+			.append(" 			AND ACOUNT_ID_FRIEND 		= :accountIdFriend)		")
+			.append(" 	OR 	(	ACCOUNT_ID 					= :accountIdFriend2		")
+			.append(" 			AND ACOUNT_ID_FRIEND 		= :accountId2)			");
+		
+		SQLQuery sqlQuery = getSession().createSQLQuery(query.toString());
+		sqlQuery.setString("accountId", accountId);
+		sqlQuery.setString("accountIdFriend", accountIdFriend);
+		sqlQuery.setString("accountId2", accountIdFriend);
+		sqlQuery.setString("accountIdFriend2", accountId);
+		return sqlQuery.executeUpdate();
+		
 	}
 
 }

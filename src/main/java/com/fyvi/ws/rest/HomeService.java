@@ -41,4 +41,18 @@ public class HomeService {
 		}
 		return model;
 	}
+	
+	@GET
+	@Path("/remove-friends/{accountId}/{accountIdFriend}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public UserModel removeFriend(@PathParam("accountId")String accountId, @PathParam("accountIdFriend")String accountIdFriend) {
+		try {
+			int result = userManagement.removeFriend(accountId, accountIdFriend);
+			List<UserFriendsView> listFriends = userManagement.getListFriends(accountId);
+			model.setListFriends(listFriends);
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+		}
+		return model;
+	}
 }
