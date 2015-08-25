@@ -2,6 +2,7 @@ package com.fyvi.ws.info.view;
 
 
 public class UserFriendsView {
+	private String accountId;
 	private String accountName;
 	private String fullName;
 	private String gender;
@@ -43,6 +44,12 @@ public class UserFriendsView {
 	}
 	public void setBirthDate(String birthDate) {
 		this.birthDate = birthDate;
+	}
+	public String getAccountId() {
+		return accountId;
+	}
+	public void setAccountId(String accountId) {
+		this.accountId = accountId;
 	}
 	
 }

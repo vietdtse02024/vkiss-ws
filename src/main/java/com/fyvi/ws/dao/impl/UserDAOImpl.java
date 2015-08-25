@@ -29,7 +29,9 @@ public class UserDAOImpl extends BaseHelperDAO<Account> implements IUserDAO<Acco
 		StringBuffer query = new StringBuffer("SELECT  ac.*							")
 		.append(" FROM ACCOUNT AS ac INNER JOIN RELATION_SHIP AS rls				")
 		.append(" ON ac.ACCOUNT_ID = rls.ACCOUNT_ID_FRIEND 							")
-		.append(" WHERE rls.ACCOUNT_ID = :accountId 								");
+		.append(" WHERE rls.ACCOUNT_ID = :accountId 								")
+		.append(" AND rls.ACTIVE_FLG = 1 											")
+		.append(" AND rls.STATUS = 1 												");
 		SQLQuery sqlQuery = getSession().createSQLQuery(query.toString()).addEntity(Account.class);
 		sqlQuery.setString("accountId", accountId);
 		return (List<Account>) sqlQuery.list();
@@ -50,9 +52,9 @@ public class UserDAOImpl extends BaseHelperDAO<Account> implements IUserDAO<Acco
 		StringBuffer query = new StringBuffer("UPDATE RELATION_SHIP ")
 			.append(" SET ACTIVE_FLG = 0 											")
 			.append(" WHERE (	ACCOUNT_ID 					= :accountId			")
-			.append(" 			AND ACOUNT_ID_FRIEND 		= :accountIdFriend)		")
+			.append(" 			AND ACCOUNT_ID_FRIEND 		= :accountIdFriend)		")
 			.append(" 	OR 	(	ACCOUNT_ID 					= :accountIdFriend2		")
-			.append(" 			AND ACOUNT_ID_FRIEND 		= :accountId2)			");
+			.append(" 			AND ACCOUNT_ID_FRIEND 		= :accountId2)			");
 		
 		SQLQuery sqlQuery = getSession().createSQLQuery(query.toString());
 		sqlQuery.setString("accountId", accountId);

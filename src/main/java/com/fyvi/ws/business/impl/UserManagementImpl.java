@@ -57,4 +57,15 @@ public class UserManagementImpl extends AbstractManager implements IUserManageme
 		return getUserDAO().removeFriend(accountId, accountIdFriend);
 	}
 
+	@Override
+	public UserFriendsView findFriends(String phoneNo) throws Exception {
+		Account account = getUserDAO().getUserByPhoneNo(phoneNo);
+		UserFriendsView userFriendsView = null;
+		if (account != null) {
+			userFriendsView = new UserFriendsView();
+			BeanUtils.copyProperties(account, userFriendsView);
+		}
+		return userFriendsView;
+	}
+
 }

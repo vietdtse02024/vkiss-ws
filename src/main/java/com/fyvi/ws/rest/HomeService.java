@@ -55,4 +55,17 @@ public class HomeService {
 		}
 		return model;
 	}
+	
+	@GET
+	@Path("/find-friends/{phoneNo}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public UserModel findFriends(@PathParam("phoneNo")String phoneNo) {
+		try {
+			UserFriendsView result = userManagement.findFriends(phoneNo);
+//			model.setListFriends(listFriends);
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+		}
+		return model;
+	}
 }

@@ -10,5 +10,6 @@ public interface IUserManagement {
 	public Integer registAccount(Account account) throws Exception;
 	public List<UserFriendsView> getListFriends(String accountId) throws Exception;
 	public boolean checkPhoneNo(String phoneNo) throws Exception;
+	public UserFriendsView findFriends(String phoneNo) throws Exception;
 	public int removeFriend(String accountId, String accountIdFriend) throws Exception;
 }
