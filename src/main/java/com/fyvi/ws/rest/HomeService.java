@@ -62,7 +62,7 @@ public class HomeService {
 	public UserModel findFriends(@PathParam("phoneNo")String phoneNo) {
 		try {
 			UserFriendsView result = userManagement.findFriends(phoneNo);
-//			model.setListFriends(listFriends);
+ 			model.setUserFriendsView(result);
 		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
 		}
