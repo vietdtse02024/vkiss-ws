@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.fyvi.ws.bean.LocationHistory" table="LOCATION_HISTORY">
+		<id name="locationId" type="string">
+			<column name="LOCATION_ID" length="50"/>
+		</id>
+		<property name="accountId" type="string">
+			<column name="ACCOUNT_ID" length="50" />
+		</property>
+		<property name="address" type="string">
+			<column name="ADDRESS" length="500"/>
+		</property>
+		<property name="latitude" type="java.lang.Double">
+			<column name="LATITUDE"/>
+		</property>
+		<property name="longtitude" type="java.lang.Double">
+			<column name="LONGTITUDE"/>
+		</property>
+		<property name="updateDate" type="java.util.Date">
+			<column name="UPDATED_DATE"/>
+		</property>
+		<property name="activeFlg" type="java.lang.Integer">
+			<column name="ACTIVE_FLG"/>
+		</property>
+	</class>
+</hibernate-mapping>

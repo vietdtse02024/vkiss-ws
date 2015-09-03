@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.BeanUtils;
 
 import com.fyvi.ws.bean.Account;
+import com.fyvi.ws.bean.LocationHistory;
 import com.fyvi.ws.business.IUserManagement;
 import com.fyvi.ws.common.AbstractManager;
 import com.fyvi.ws.common.DateUtils;
@@ -66,6 +67,11 @@ public class UserManagementImpl extends AbstractManager implements IUserManageme
 			BeanUtils.copyProperties(account, userFriendsView);
 		}
 		return userFriendsView;
+	}
+
+	@Override
+	public List<LocationHistory> getLocation(String accountId) throws Exception {
+		return getUserDAO().getLocation(accountId);
 	}
 
 }

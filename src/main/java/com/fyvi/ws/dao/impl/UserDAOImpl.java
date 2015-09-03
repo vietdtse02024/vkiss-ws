@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.SQLQuery;
 
 import com.fyvi.ws.bean.Account;
+import com.fyvi.ws.bean.LocationHistory;
 import com.fyvi.ws.dao.IUserDAO;
 
 @SuppressWarnings("unchecked")
@@ -63,6 +64,18 @@ public class UserDAOImpl extends BaseHelperDAO<Account> implements IUserDAO<Acco
 		sqlQuery.setString("accountIdFriend2", accountId);
 		return sqlQuery.executeUpdate();
 		
+	}
+
+	@Override
+	public List<LocationHistory> getLocation(String accountId) throws Exception {
+		StringBuffer query = new StringBuffer("SELECT *						")
+		.append(" FROM LOCATION_HISTORY 									")
+		.append(" WHERE ACCOUNT_ID = :accountId 							")
+		.append(" AND ACTIVE_FLG = 1 										")
+		.append(" ORDER BY UPDATED_DATE DESC 								");
+		SQLQuery sqlQuery = getSession().createSQLQuery(query.toString()).addEntity(LocationHistory.class);
+		sqlQuery.setString("accountId", accountId);
+		return (List<LocationHistory>) sqlQuery.list();
 	}
 
 }

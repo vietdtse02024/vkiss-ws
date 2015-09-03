@@ -3,6 +3,7 @@ package com.fyvi.ws.model;
 import java.util.List;
 
 import com.fyvi.ws.bean.Account;
+import com.fyvi.ws.bean.LocationHistory;
 import com.fyvi.ws.info.view.UserFriendsView;
 
 public class UserModel {
@@ -11,6 +12,7 @@ public class UserModel {
 	List<UserFriendsView> listFriends;
 	String errorMessage;
 	UserFriendsView userFriendsView;
+	List<LocationHistory> listLocationHistory;
 
 	public List<Account> getListUser() {
 		return listUser;
@@ -50,6 +52,14 @@ public class UserModel {
 
 	public void setUserFriendsView(UserFriendsView userFriendsView) {
 		this.userFriendsView = userFriendsView;
+	}
+
+	public List<LocationHistory> getListLocationHistory() {
+		return listLocationHistory;
+	}
+
+	public void setListLocationHistory(List<LocationHistory> listLocationHistory) {
+		this.listLocationHistory = listLocationHistory;
 	}
 	
 }

@@ -37,6 +37,7 @@ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 			<list>
 				<value>/hibernate/Account.hbm.xml</value>
 				<value>/hibernate/RelationShip.hbm.xml</value>
+				<value>/hibernate/LocationHistory.hbm.xml</value>
 			</list>
 		</property>
 	</bean>

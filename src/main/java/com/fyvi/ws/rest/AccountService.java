@@ -1,5 +1,7 @@
 package com.fyvi.ws.rest;
  
+import java.util.List;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -12,6 +14,7 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 
 import com.fyvi.ws.bean.Account;
+import com.fyvi.ws.bean.LocationHistory;
 import com.fyvi.ws.business.IUserManagement;
 import com.fyvi.ws.model.UserModel;
  
@@ -53,6 +56,21 @@ public class AccountService {
 		}
 		return model;
 		
+	}
+	
+	@GET
+	@Path("/get-location/{accountId}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public UserModel getLocation(@PathParam("accountId")String accountId) {
+		
+		try {
+			List<LocationHistory> listLocation = userManagement.getLocation(accountId);
+			model.setListLocationHistory(listLocation);
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+		}
+		return model;
+ 
 	}
 
 	public IUserManagement getUserManagement() {
