@@ -14,8 +14,8 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 
 import com.fyvi.ws.bean.Account;
-import com.fyvi.ws.bean.LocationHistory;
 import com.fyvi.ws.business.IUserManagement;
+import com.fyvi.ws.info.view.LocationHistoryView;
 import com.fyvi.ws.model.UserModel;
  
 @Component
@@ -64,7 +64,7 @@ public class AccountService {
 	public UserModel getLocation(@PathParam("accountId")String accountId) {
 		
 		try {
-			List<LocationHistory> listLocation = userManagement.getLocation(accountId);
+			List<LocationHistoryView> listLocation = userManagement.getLocationView(accountId);
 			model.setListLocationHistory(listLocation);
 		} catch (Exception e) {
 			logger.error(e.getMessage(), e);

@@ -6,4 +6,7 @@ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 	<bean id="userDAO" class="com.fyvi.ws.dao.impl.UserDAOImpl">
 	    <property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
 	</bean>
+	<bean id="locationHisDAO" class="com.fyvi.ws.dao.impl.LocationHisDAOImpl">
+	    <property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+	</bean>
 </beans>

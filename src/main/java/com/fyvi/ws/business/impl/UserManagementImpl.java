@@ -7,12 +7,12 @@ import java.util.List;
 import org.springframework.beans.BeanUtils;
 
 import com.fyvi.ws.bean.Account;
-import com.fyvi.ws.bean.LocationHistory;
 import com.fyvi.ws.business.IUserManagement;
 import com.fyvi.ws.common.AbstractManager;
 import com.fyvi.ws.common.DateUtils;
 import com.fyvi.ws.common.IContants;
 import com.fyvi.ws.common.MD5Encrypt;
+import com.fyvi.ws.info.view.LocationHistoryView;
 import com.fyvi.ws.info.view.UserFriendsView;
 
 public class UserManagementImpl extends AbstractManager implements IUserManagement{
@@ -25,12 +25,13 @@ public class UserManagementImpl extends AbstractManager implements IUserManageme
 
 	@Override
 	public Integer registAccount(Account account) throws Exception {
-		String accountId = "ACCOUNT_" + DateUtils.formatDateToString(new Date(), DateUtils.PATERN_YYYYMMDDhhmmss);
+		Date currentDate = new Date();
+		String accountId = "ACCOUNT_" + DateUtils.formatDateToString(currentDate, DateUtils.PATERN_YYYYMMddhhmmss);
 		String password = account.getPassword();
 		account.setAccountId(accountId);
 		account.setPassword(MD5Encrypt.crypt(password));
-		account.setInputDate(new Date());
-		account.setUpdateDate(new Date());
+		account.setInputDate(currentDate);
+		account.setUpdateDate(currentDate);
 		account.setActiveFlg(IContants.ACTIVE_FLG.ACTIVE);
 		return getUserDAO().registAccount(account);
 	}
@@ -70,8 +71,13 @@ public class UserManagementImpl extends AbstractManager implements IUserManageme
 	}
 
 	@Override
-	public List<LocationHistory> getLocation(String accountId) throws Exception {
-		return getUserDAO().getLocation(accountId);
+	public List<LocationHistoryView> getLocationView(String accountId) throws Exception {
+		return getLocationHisDAO().getListLocationHis(accountId);
+	}
+
+	@Override
+	public Account findAccountById(String id) {
+		return getUserDAO().findById(Account.class, id);
 	}
 
 }

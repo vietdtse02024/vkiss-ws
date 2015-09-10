@@ -1,5 +1,7 @@
 package com.fyvi.ws.dao;
 
-public interface IBaseDAO<E> {
+import java.io.Serializable;
 
+public interface IBaseDAO<E> {
+	public E findById(Class<E> e, Serializable id);
 }
