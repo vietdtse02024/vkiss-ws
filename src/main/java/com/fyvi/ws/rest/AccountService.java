@@ -72,6 +72,19 @@ public class AccountService {
 		return model;
  
 	}
+	@GET
+	@Path("/get-account-by-id/{accountId}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public UserModel getAccountById(@PathParam("accountId")String accountId) {
+		try {
+			Account account = userManagement.findAccountById(accountId);
+			model.setAccount(account);
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+		}
+		return model;
+		
+	}
 
 	public IUserManagement getUserManagement() {
 		return userManagement;
