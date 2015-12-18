@@ -12,6 +12,7 @@ import com.fyvi.ws.common.AbstractManager;
 import com.fyvi.ws.common.DateUtils;
 import com.fyvi.ws.common.IContants;
 import com.fyvi.ws.common.MD5Encrypt;
+import com.fyvi.ws.info.view.AccountInfo;
 import com.fyvi.ws.info.view.LocationHistoryView;
 import com.fyvi.ws.info.view.UserFriendsView;
 
@@ -76,8 +77,12 @@ public class UserManagementImpl extends AbstractManager implements IUserManageme
 	}
 
 	@Override
-	public Account findAccountById(String id) {
-		return getUserDAO().findById(Account.class, id);
+	public AccountInfo findAccountById(String id) throws Exception {
+		List<AccountInfo> resultDAO = getUserDAO().getAccountInfo(id);
+		if (resultDAO != null && resultDAO.size() > 0) {
+			return resultDAO.get(0);
+		}
+		return null;
 	}
 
 }

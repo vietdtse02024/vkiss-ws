@@ -31,7 +31,6 @@ public class LocationHisDAOImpl extends BaseHelperDAO<LocationHistory> implement
 		.append(" ORDER BY lh.UPDATED_DATE DESC 					");
 		
 		Query query = QueryBuilderUtils.getSQLQuery(getSession(), sqlQuery.toString(), LocationHistoryView.class );
-//		SQLQuery sqlQuery = getSession().createSQLQuery(query.toString()).addEntity(LocationHistoryView.class);
 		query.setParameter("accountId", accountId);
 		return (List<LocationHistoryView>) query.list();
 	}

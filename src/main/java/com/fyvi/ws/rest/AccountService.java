@@ -15,6 +15,7 @@ import org.springframework.stereotype.Component;
 
 import com.fyvi.ws.bean.Account;
 import com.fyvi.ws.business.IUserManagement;
+import com.fyvi.ws.info.view.AccountInfo;
 import com.fyvi.ws.info.view.LocationHistoryView;
 import com.fyvi.ws.model.UserModel;
  
@@ -77,8 +78,12 @@ public class AccountService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public UserModel getAccountById(@PathParam("accountId")String accountId) {
 		try {
-			Account account = userManagement.findAccountById(accountId);
-			model.setAccount(account);
+			logger.info("Start get accountInfo by id: " + accountId);
+			AccountInfo accountInfo = userManagement.findAccountById(accountId);
+			if (accountInfo == null) {
+				accountInfo = new AccountInfo();
+			}
+			model.setAccountInfo(accountInfo);
 		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
 		}
