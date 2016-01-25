@@ -7,11 +7,13 @@
 	http://www.springframework.org/schema/context/spring-context-3.0.xsd">
  
 	<context:component-scan base-package="com.fyvi.ws.rest" />
-	<bean id="abstractManager" abstract="true" class="phn.nts.ams.simple.fe.common.AbstractManager">
+	<bean id="abstractManager" abstract="true" class="com.fyvi.ws.common.AbstractManager">
 		<property name="userDAO" ref="userDAO"/>
 		<property name="locationHisDAO" ref="locationHisDAO"/>
 	</bean>
 	<bean id="userManagement" class="com.fyvi.ws.business.impl.UserManagementImpl" parent="abstractManager">
+	</bean>
+	<bean id="friendManagement" class="com.fyvi.ws.business.impl.FriendManagementImpl" parent="abstractManager">
 	</bean>
  
 </beans>

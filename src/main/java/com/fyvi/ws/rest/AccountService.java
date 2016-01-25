@@ -23,7 +23,7 @@ import com.fyvi.ws.model.UserModel;
 @Path("/account")
 public class AccountService {
 	
-	private static final Logger logger = Logger.getLogger(AccountService.class);
+	final static Logger logger = Logger.getLogger(AccountService.class);
 	private IUserManagement userManagement;
 	UserModel model = new UserModel();
 	

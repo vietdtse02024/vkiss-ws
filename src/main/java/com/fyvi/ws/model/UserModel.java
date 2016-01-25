@@ -12,6 +12,7 @@ public class UserModel {
 	private Account account;
 	private List<UserFriendsView> listFriends;
 	private String errorMessage;
+	private String successMessage;
 	private UserFriendsView userFriendsView;
 	private List<LocationHistoryView> listLocationHistory;
 	private Account friendAccount;
@@ -78,6 +79,14 @@ public class UserModel {
 
 	public void setAccountInfo(AccountInfo accountInfo) {
 		this.accountInfo = accountInfo;
+	}
+
+	public String getSuccessMessage() {
+		return successMessage;
+	}
+
+	public void setSuccessMessage(String successMessage) {
+		this.successMessage = successMessage;
 	}
 	
 }

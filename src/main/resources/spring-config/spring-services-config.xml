@@ -13,5 +13,8 @@
 	<bean id="homeService" class="com.fyvi.ws.rest.HomeService">
 		<property name="userManagement" ref="userManagement" />
 	</bean>
+	<bean id="friendService" class="com.fyvi.ws.rest.FriendService">
+		<property name="friendManagement" ref="friendManagement" />
+	</bean>
  
 </beans>
