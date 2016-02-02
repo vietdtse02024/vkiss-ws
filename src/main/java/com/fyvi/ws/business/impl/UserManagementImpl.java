@@ -57,7 +57,7 @@ public class UserManagementImpl extends AbstractManager implements IUserManageme
 
 	@Override
 	public int removeFriend(String accountId, String accountIdFriend) throws Exception {
-		return getUserDAO().removeFriend(accountId, accountIdFriend);
+		return getRelationShipDAO().updateFriend(accountId, accountIdFriend, IContants.ACTIVE_FLG.INACTIVE, IContants.STATUS.FRIEND_REMOVED);
 	}
 
 	@Override

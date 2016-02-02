@@ -12,6 +12,7 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 
 import com.fyvi.ws.business.IUserManagement;
+import com.fyvi.ws.common.IContants;
 import com.fyvi.ws.info.view.UserFriendsView;
 import com.fyvi.ws.model.UserModel;
 
@@ -49,6 +50,9 @@ public class HomeService {
 		try {
 			int result = userManagement.removeFriend(accountId, accountIdFriend);
 			List<UserFriendsView> listFriends = userManagement.getListFriends(accountId);
+			if (result != IContants.UPDATE_FLAG.SUCCESS) {
+				model.setErrorMessage("error.happen");
+			}
 			model.setListFriends(listFriends);
 		} catch (Exception e) {
 			logger.error(e.getMessage(), e);

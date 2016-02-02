@@ -10,10 +10,11 @@
 	<bean id="abstractManager" abstract="true" class="com.fyvi.ws.common.AbstractManager">
 		<property name="userDAO" ref="userDAO"/>
 		<property name="locationHisDAO" ref="locationHisDAO"/>
+		<property name="relationShipDAO" ref="relationShipDAO"/>
 	</bean>
 	<bean id="userManagement" class="com.fyvi.ws.business.impl.UserManagementImpl" parent="abstractManager">
 	</bean>
-	<bean id="friendManagement" class="com.fyvi.ws.business.impl.FriendManagementImpl" parent="abstractManager">
+	<bean id="friendManager" class="com.fyvi.ws.business.impl.FriendManagementImpl" parent="abstractManager">
 	</bean>
  
 </beans>

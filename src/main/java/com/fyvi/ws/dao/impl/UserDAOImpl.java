@@ -30,12 +30,13 @@ public class UserDAOImpl extends BaseHelperDAO<Account> implements IUserDAO<Acco
 
 	@Override
 	public List<Account> getListFriends(String accountId) {
-		StringBuffer query = new StringBuffer("SELECT  ac.*							")
-		.append(" FROM ACCOUNT AS ac INNER JOIN RELATION_SHIP AS rls				")
-		.append(" ON ac.ACCOUNT_ID = rls.ACCOUNT_ID_FRIEND 							")
-		.append(" WHERE rls.ACCOUNT_ID = :accountId 								")
-		.append(" AND rls.ACTIVE_FLG = 1 											")
-		.append(" AND rls.STATUS = 1 												");
+		StringBuffer query = new StringBuffer("SELECT  ac.*										")
+		.append(" FROM ACCOUNT AS ac INNER JOIN RELATION_SHIP AS rls							")
+		.append(" ON (ac.ACCOUNT_ID = rls.ACCOUNT_ID_FRIEND OR ac.ACCOUNT_ID = rls.ACCOUNT_ID) 	")
+		.append(" WHERE (rls.ACCOUNT_ID = :accountId OR rls.ACCOUNT_ID_FRIEND = :accountId)		")
+		.append(" AND ac.ACCOUNT_ID != :accountId												")
+		.append(" AND rls.ACTIVE_FLG = 1 														")
+		.append(" AND rls.STATUS = 1 															");
 		SQLQuery sqlQuery = getSession().createSQLQuery(query.toString()).addEntity(Account.class);
 		sqlQuery.setString("accountId", accountId);
 		return (List<Account>) sqlQuery.list();
@@ -49,24 +50,6 @@ public class UserDAOImpl extends BaseHelperDAO<Account> implements IUserDAO<Acco
 			account = listUser.get(0);
 		}
 		return account;
-	}
-
-	@Override
-	public int removeFriend(String accountId, String accountIdFriend) {
-		StringBuffer query = new StringBuffer("UPDATE RELATION_SHIP ")
-			.append(" SET ACTIVE_FLG = 0 											")
-			.append(" WHERE (	ACCOUNT_ID 					= :accountId			")
-			.append(" 			AND ACCOUNT_ID_FRIEND 		= :accountIdFriend)		")
-			.append(" 	OR 	(	ACCOUNT_ID 					= :accountIdFriend2		")
-			.append(" 			AND ACCOUNT_ID_FRIEND 		= :accountId2)			");
-		
-		SQLQuery sqlQuery = getSession().createSQLQuery(query.toString());
-		sqlQuery.setString("accountId", accountId);
-		sqlQuery.setString("accountIdFriend", accountIdFriend);
-		sqlQuery.setString("accountId2", accountIdFriend);
-		sqlQuery.setString("accountIdFriend2", accountId);
-		return sqlQuery.executeUpdate();
-		
 	}
 
 	@Override
